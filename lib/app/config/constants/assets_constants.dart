@@ -13,4 +13,5 @@ class AssetsConstants {
   static const String imageIllustrationNoConnection = "${images}img_no_connection_illus.png";
   static const String imageIllustrationNotFound = "${images}img_not_found_illus.png";
   static const String imageIllustrationServerError = "${images}img_server_error_illus.png";
+  static const String imageTest = "${images}img_test.jpg";
 }
