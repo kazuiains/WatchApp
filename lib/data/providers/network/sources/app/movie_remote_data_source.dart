@@ -32,7 +32,9 @@ abstract class MovieRemoteDataSource {
   );
 }
 
-class MovieRemoteDataSourceImpl extends ApiDataSource with AppApiUtils implements MovieRemoteDataSource {
+class MovieRemoteDataSourceImpl extends ApiDataSource
+    with AppApiUtils
+    implements MovieRemoteDataSource {
   @override
   Future<BaseResponseModel> nowPlaying(data) async {
     final response = await execute(
@@ -42,15 +44,16 @@ class MovieRemoteDataSourceImpl extends ApiDataSource with AppApiUtils implement
       onBadResponse: (exception) => badResponse(exception),
     );
 
-    return BaseResponseModel.fromJson(
+    return BaseResponseModel.listFromJson(
       response,
-      () => response != null
-          ? response
+      (data) => data != null
+          ? data
               .map<MovieFeatureModel>(
                 (item) => MovieFeatureModel.fromJson(item),
               )
               .toList()
           : [],
+      fromApi: "nowPlaying",
     );
   }
 
@@ -63,15 +66,16 @@ class MovieRemoteDataSourceImpl extends ApiDataSource with AppApiUtils implement
       onBadResponse: (exception) => badResponse(exception),
     );
 
-    return BaseResponseModel.fromJson(
+    return BaseResponseModel.listFromJson(
       response,
-      () => response != null
-          ? response
+      (data) => data != null
+          ? data
               .map<MovieFeatureModel>(
                 (item) => MovieFeatureModel.fromJson(item),
               )
               .toList()
           : [],
+      fromApi: "popular",
     );
   }
 
@@ -84,15 +88,16 @@ class MovieRemoteDataSourceImpl extends ApiDataSource with AppApiUtils implement
       onBadResponse: (exception) => badResponse(exception),
     );
 
-    return BaseResponseModel.fromJson(
+    return BaseResponseModel.listFromJson(
       response,
-      () => response != null
-          ? response
+      (data) => data != null
+          ? data
               .map<MovieFeatureModel>(
                 (item) => MovieFeatureModel.fromJson(item),
               )
               .toList()
           : [],
+      fromApi: "topRated",
     );
   }
 
@@ -105,15 +110,16 @@ class MovieRemoteDataSourceImpl extends ApiDataSource with AppApiUtils implement
       onBadResponse: (exception) => badResponse(exception),
     );
 
-    return BaseResponseModel.fromJson(
+    return BaseResponseModel.listFromJson(
       response,
-      () => response != null
-          ? response
+      (data) => data != null
+          ? data
               .map<MovieFeatureModel>(
                 (item) => MovieFeatureModel.fromJson(item),
               )
               .toList()
           : [],
+      fromApi: "upcoming",
     );
   }
 
@@ -135,6 +141,7 @@ class MovieRemoteDataSourceImpl extends ApiDataSource with AppApiUtils implement
               )
               .toList()
           : [],
+      fromApi: "search",
     );
   }
 
@@ -150,6 +157,7 @@ class MovieRemoteDataSourceImpl extends ApiDataSource with AppApiUtils implement
     return BaseResponseModel.fromJson(
       response,
       () => MovieFeatureModel.fromJson(response),
+      fromApi: "detail",
     );
   }
 }

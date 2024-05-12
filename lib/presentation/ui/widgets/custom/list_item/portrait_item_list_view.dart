@@ -1,13 +1,13 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:watch_app/app/config/constants/assets_constants.dart';
+import 'package:watch_app/app/config/constants/link_page_constants.dart';
 import 'package:watch_app/domain/entities/feature/movie/movie_feature.dart';
 
 class PortraitItemListView extends StatelessWidget {
   final MovieFeature item;
   final void Function()? onTap;
 
-  PortraitItemListView({
+  const PortraitItemListView({
     super.key,
     required this.item,
     this.onTap,
@@ -28,51 +28,50 @@ class PortraitItemListView extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Expanded(
-                  child: Ink.image(
-                    image: const AssetImage(
-                      AssetsConstants.imageTest,
-                    ),
-                    fit: BoxFit.cover,
-                  ),
+                  child: item.backdropPath != null
+                      ? Ink.image(
+                          image: NetworkImage(
+                            "$imgUrl500${item.backdropPath}",
+                          ),
+                          fit: BoxFit.cover,
+                        )
+                      : Ink.image(
+                          image: const AssetImage(
+                            AssetsConstants.imageNoImage,
+                          ),
+                          fit: BoxFit.cover,
+                        ),
                 ),
                 Container(
-                  padding: EdgeInsets.all(8),
+                  padding: const EdgeInsets.all(8),
                   color: Colors.black.withOpacity(.1),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       Text(
-                        "Godzilla Minus One",
-                        style: TextStyle(
+                        "${item.title}",
+                        style: const TextStyle(
                           fontWeight: FontWeight.bold,
+                          overflow: TextOverflow.ellipsis,
                         ),
+                        maxLines: 1,
                       ),
-                      SizedBox(
-                        height: 4,
-                      ),
-                      Text(
-                        "Action, Fantasy",
-                        style: TextStyle(
-                          fontSize: 10,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                      SizedBox(
+                      const SizedBox(
                         height: 4,
                       ),
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Icon(
+                          const Icon(
                             Icons.star,
                             color: Colors.yellow,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 2,
                           ),
                           Text(
-                            "8.5",
-                            style: TextStyle(
+                            "${item.voteAverage?.toStringAsFixed(1)}",
+                            style: const TextStyle(
                               fontSize: 12,
                               fontWeight: FontWeight.w500,
                             ),

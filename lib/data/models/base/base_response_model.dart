@@ -6,6 +6,7 @@ class BaseResponseModel extends BaseResponse {
     super.statusCode,
     super.statusMessage,
     super.data,
+    super.from,
   });
 
   _initFromEntity(BaseResponse entity) {
@@ -13,6 +14,7 @@ class BaseResponseModel extends BaseResponse {
     statusCode = entity.statusCode;
     statusMessage = entity.statusMessage;
     data = entity.data;
+    from = entity.from;
   }
 
   BaseResponseModel.fromDynamic(dynamic dynamicEntity) {
@@ -26,14 +28,39 @@ class BaseResponseModel extends BaseResponse {
 
   BaseResponseModel.fromJson(
     dynamic json,
-    Function() response,
-  ) {
+    Function() response, {
+    String? fromApi,
+  }) {
     if (json != null) {
       success = json['success'];
       statusCode = json['status_code'];
       statusMessage = json['status_message'];
     }
 
+    if (fromApi != null) {
+      from = fromApi;
+    }
+
     data = response();
+  }
+
+  BaseResponseModel.listFromJson(
+      dynamic json,
+      Function(dynamic data) response, {
+        String? fromApi,
+      }) {
+    if (json != null) {
+      success = json['success'];
+      statusCode = json['status_code'];
+      statusMessage = json['status_message'];
+    }
+
+    if (fromApi != null) {
+      from = fromApi;
+    }
+
+    if(json["results"] != null ){
+      data = response(json["results"]);
+    }
   }
 }

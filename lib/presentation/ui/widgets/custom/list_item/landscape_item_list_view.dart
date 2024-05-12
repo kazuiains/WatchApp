@@ -20,14 +20,23 @@ class LandscapeItemListView extends StatelessWidget {
         child: InkWell(
           borderRadius: BorderRadius.circular(15),
           onTap: onTap,
-          child: Ink.image(
-            image: const AssetImage(
-              AssetsConstants.imageTest,
-            ),
-            width: 190,
-            height: 130,
-            fit: BoxFit.cover,
-          ),
+          child: item.backdropPath != null
+              ? Ink.image(
+                  image: NetworkImage(
+                    "$imgUrl500${item.backdropPath}",
+                  ),
+                  width: 190,
+                  height: 130,
+                  fit: BoxFit.cover,
+                )
+              : Ink.image(
+                  image: const AssetImage(
+                    AssetsConstants.imageNoImage,
+                  ),
+                  width: 190,
+                  height: 130,
+                  fit: BoxFit.cover,
+                ),
         ),
       ),
     );

@@ -49,7 +49,6 @@ class AppStrings {
 
   //http request
   static const String httpRequestStatusCodeSuccess = "200";
-  static const String httpRequestStatusCodeTokenExpired = "403";
   static const String httpRequestStatusCodeNameSuccess = "success";
 
   //exception
@@ -64,34 +63,4 @@ class AppStrings {
   static const String codeAEOther = "ae-other";
   static const String codeAEUndefined = "ae-undefined";
   static const String codeAEServerError = "ae-server-error";
-
-  //global exception
-  static const String globalExceptionNoInternet = "network_error";
-
-  //message failed api
-  static const String apiMessageFailedRegister1 = "user is already exists";
-  static const String apiMessageFailedGenerateOtp1 = "otp failed to generate";
-  static const String apiMessageFailedValidateOtp1 = "otp expired!";
-  static const String apiMessageFailedValidateOtp2 = "invalid otp";
-  static const String apiMessageFailedLogin1 = "invalid username or password";
-  static const String apiMessageFailedProfile1 = "invalid user";
-  static const String apiMessageFailedChargerPoint1 = "charge box is not registered, please contact administrator";
-  static const String apiMessageFailedChargerPoint2 = "charge point not found";
-  static const String apiMessageFailedChargerPoint3 = "invalid connector";
-  static const String apiMessageFailedChargerPoint4 = "charge box is in use";
-  static const String apiMessageFailedChargerPoint5 = "charge box is in use, you have an active transaction";
-  static const String apiMessageFailedStartCharging1 = "transaction order number is not found";
-  static const String apiMessageFailedStartCharging2 = "transaction order is not pay yet!";
-  static const String apiMessageFailedStartCharging3 = "precondition failed";
-  static const String apiMessageFailedStartCharging4 = "forbidden";
-  static const String apiMessageFailedStartCharging5 = "charging box is in use";
-  static const String apiMessageFailedStopCharger1 = "transaction order number is not found";
-  static const String apiMessageFailedStopCharger2 = "forbidden, invalid charging session";
-  static const String apiMessageFailedStopCharger3 = "forbidden";
-  static const String apiMessageFailedChangePassword1 = "invalid old password";
-  static const String apiMessageFailedForgotPassword1 = "code failed to generated";
-  static const String apiMessageFailedForgotPassword2 = "account doesn't exists";
-  static const String apiMessageFailedForgotPassword3 = "this account was registered from google login, unable to reset password";
-  static const String apiMessageFailedForgotPassword4 = "invalid otp";
-  static const String apiMessageFailedForgotPassword5 = "otp expired!";
 }

@@ -64,6 +64,9 @@ dependencies:
   #easy loading
   flutter_easyloading: ^3.0.5
 
+  #carousel slider
+  carousel_slider: ^4.2.1
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -90,7 +93,6 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
-    - assets/logos/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
