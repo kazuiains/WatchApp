@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:watch_app/data/models/general/general_file_model.dart';
-import 'package:watch_app/data/models/general/general_production_model.dart';
+import 'package:watch_app/data/models/feature/general/general_file_model.dart';
+import 'package:watch_app/data/models/feature/general/general_production_model.dart';
 import 'package:watch_app/domain/entities/feature/movie/movie_feature.dart';
 
 MovieFeatureModel movieFeatureFromJson(String str) => MovieFeatureModel.fromJson(json.decode(str));

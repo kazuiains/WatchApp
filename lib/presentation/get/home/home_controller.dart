@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:watch_app/app/config/routes/app_routes.dart';
 import 'package:watch_app/domain/entities/base/base_request.dart';
 import 'package:watch_app/domain/entities/base/base_response.dart';
 import 'package:watch_app/domain/entities/feature/movie/movie_feature.dart';
@@ -46,6 +47,13 @@ class HomeController extends BaseController {
   void onReady() {
     super.onReady();
     onCall();
+    listenConnection(
+      connected: () {
+        if (isErrorPage) {
+          onCall();
+        }
+      },
+    );
   }
 
   @override
@@ -90,5 +98,13 @@ class HomeController extends BaseController {
       },
       pageScope: true,
     );
+  }
+
+  @override
+  onRoute({
+    int? route,
+    int? index,
+  }) {
+    Get.toNamed(AppRoutes.list);
   }
 }

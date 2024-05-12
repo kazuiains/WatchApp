@@ -1,6 +1,6 @@
 import 'package:watch_app/data/models/base/base_request_model.dart';
 import 'package:watch_app/data/models/base/base_response_model.dart';
-import 'package:watch_app/data/models/movie/movie_feature_model.dart';
+import 'package:watch_app/data/models/feature/movie/movie_feature_model.dart';
 import 'package:watch_app/data/providers/network/api_data_source.dart';
 import 'package:watch_app/data/providers/network/api_endpoint.dart';
 import 'package:watch_app/data/providers/network/api_request_representable.dart';
@@ -132,10 +132,10 @@ class MovieRemoteDataSourceImpl extends ApiDataSource
       onBadResponse: (exception) => badResponse(exception),
     );
 
-    return BaseResponseModel.fromJson(
+    return BaseResponseModel.listFromJson(
       response,
-      () => response != null
-          ? response
+      (data) => data != null
+          ? data
               .map<MovieFeatureModel>(
                 (item) => MovieFeatureModel.fromJson(item),
               )

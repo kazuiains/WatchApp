@@ -147,7 +147,7 @@ class HomePage extends BaseOnlineGetView<HomeController> {
         ),
         floatingActionButton: FloatingActionButton(
           child: const Icon(Icons.search_rounded),
-          onPressed: () {},
+          onPressed: () => controller.onRoute(),
         ),
       ),
     );
