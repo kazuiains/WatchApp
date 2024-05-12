@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:watch_app/presentation/get/list/list_controller.dart';
 import 'package:watch_app/presentation/ui/pages/base/base_online_get_view.dart';
-import 'package:watch_app/presentation/ui/widgets/base/containment/base_spacer_view.dart';
 import 'package:watch_app/presentation/ui/widgets/base/navigation/base_top_app_bar_view.dart';
 import 'package:watch_app/presentation/ui/widgets/custom/list_item/portrait_item_list_view.dart';
 
@@ -38,7 +37,7 @@ class ListPage extends BaseOnlineGetView<ListController> {
             return RefreshIndicator(
               onRefresh: () => controller.onRefreshPage(),
               child: GridView.builder(
-                padding: EdgeInsets.only(
+                padding: const EdgeInsets.only(
                   left: 8,
                   right: 8,
                 ),

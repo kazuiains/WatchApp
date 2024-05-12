@@ -10,7 +10,6 @@ import 'package:watch_app/app/config/localizations/translation_key.dart';
 import 'package:watch_app/app/exception/app_exception.dart';
 import 'package:watch_app/app/types/modal_type.dart';
 import 'package:watch_app/app/types/snack_bar_type.dart';
-import 'package:watch_app/domain/entities/base/base_response.dart';
 import 'package:watch_app/presentation/ui/widgets/base/communication/base_loading_view.dart';
 import 'package:watch_app/presentation/ui/widgets/base/communication/base_snackbar_view.dart';
 import 'package:watch_app/presentation/ui/widgets/base/containment/base_dialogs_view.dart';

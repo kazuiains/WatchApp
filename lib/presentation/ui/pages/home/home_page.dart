@@ -50,20 +50,20 @@ class HomePage extends BaseOnlineGetView<HomeController> {
                         )
                         .toList(),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 8,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
+                  const Padding(
+                    padding: EdgeInsets.all(8.0),
                     child: Text("Top Rated"),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 8,
                   ),
                   SizedBox(
                     height: 130,
                     child: ListView.separated(
-                      padding: EdgeInsets.only(
+                      padding: const EdgeInsets.only(
                         left: 8,
                         right: 8,
                       ),
@@ -79,20 +79,20 @@ class HomePage extends BaseOnlineGetView<HomeController> {
                       itemCount: controller.topRatedList.length,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 16,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
+                  const Padding(
+                    padding: EdgeInsets.all(8.0),
                     child: Text("Now Playing"),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 8,
                   ),
                   SizedBox(
                     height: 240,
                     child: ListView.separated(
-                      padding: EdgeInsets.only(
+                      padding: const EdgeInsets.only(
                         left: 8,
                         right: 8,
                       ),
@@ -108,20 +108,20 @@ class HomePage extends BaseOnlineGetView<HomeController> {
                       itemCount: controller.nowPlayingList.length,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 16,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
+                  const Padding(
+                    padding: EdgeInsets.all(8.0),
                     child: Text("Upcoming"),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 8,
                   ),
                   SizedBox(
                     height: 240,
                     child: ListView.separated(
-                      padding: EdgeInsets.only(
+                      padding: const EdgeInsets.only(
                         left: 8,
                         right: 8,
                       ),
@@ -137,7 +137,7 @@ class HomePage extends BaseOnlineGetView<HomeController> {
                       itemCount: controller.upcomingList.length,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 8,
                   ),
                 ],
