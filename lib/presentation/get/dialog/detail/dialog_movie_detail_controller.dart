@@ -82,9 +82,7 @@ class DialogMovieDetailController extends BaseController {
 
   onPlay() {
     if (!isLoading) {
-      print("video size: ${detail.videos?.length}");
-      print("video no 1: ${detail.videos?.first}");
-      if(detail.videos != null && detail.videos!.length > 0){
+      if (detail.videos != null && detail.videos!.length > 0) {
         Get.to(
           const DialogPlayView(),
           binding: DialogPlayBinding(),
@@ -92,7 +90,7 @@ class DialogMovieDetailController extends BaseController {
           fullscreenDialog: true,
           transition: Transition.fade,
         );
-      }else{
+      } else {
         noTitleSnackBar(message: "Maaf video tidak ditemukan");
       }
     } else {
