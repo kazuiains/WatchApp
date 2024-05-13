@@ -6,6 +6,7 @@ class BaseRequestModel extends BaseRequest {
     super.page,
     super.query,
     super.appendToResponse,
+    super.id,
   });
 
   _initFromEntity(BaseRequest entity) {
@@ -13,6 +14,7 @@ class BaseRequestModel extends BaseRequest {
     page = entity.page;
     query = entity.query;
     appendToResponse = entity.appendToResponse;
+    id = entity.id;
   }
 
   BaseRequestModel.fromDynamic(dynamic dynamicEntity) {

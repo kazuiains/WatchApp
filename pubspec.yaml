@@ -67,6 +67,9 @@ dependencies:
   #carousel slider
   carousel_slider: ^4.2.1
 
+  #youtube player
+  youtube_player_flutter: ^9.0.1
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

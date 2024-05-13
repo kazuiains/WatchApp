@@ -53,7 +53,7 @@ class ListPage extends BaseOnlineGetView<ListController> {
                 ),
                 itemBuilder: (context, index) => PortraitItemListView(
                   item: controller.searchList[index],
-                  onTap: () {},
+                  onTap: () => controller.onDetail(controller.searchList[index]),
                 ),
                 itemCount: controller.searchList.length,
               ),

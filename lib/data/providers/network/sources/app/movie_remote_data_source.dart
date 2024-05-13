@@ -149,6 +149,7 @@ class MovieRemoteDataSourceImpl extends ApiDataSource
   Future<BaseResponseModel> detail(data) async {
     final response = await execute(
       endpoint: ApiEndpoint.mDetail,
+      path: "/${data.id}",
       params: toParam(data),
       method: HTTPMethod.get,
       onBadResponse: (exception) => badResponse(exception),

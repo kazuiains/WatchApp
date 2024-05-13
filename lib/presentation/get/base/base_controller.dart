@@ -108,8 +108,7 @@ class BaseController extends GetxController {
     Function()? connected,
     Function()? disconnected,
   }) async {
-    connectionListener =
-        InternetConnection().onStatusChange.listen((InternetStatus status) {
+    connectionListener = InternetConnection().onStatusChange.listen((InternetStatus status) {
       switch (status) {
         case InternetStatus.connected:
           if (connected != null) {
@@ -309,8 +308,7 @@ class BaseController extends GetxController {
       pageLoadFail(
         errorPageCode: 4,
       );
-    } else if (exception.code == AppStrings.codeAEConnection ||
-        exception.code == AppStrings.codeAECancel) {
+    } else if (exception.code == AppStrings.codeAEConnection || exception.code == AppStrings.codeAECancel) {
       pageLoadFail(
         errorPageCode: 0,
       );
@@ -354,8 +352,7 @@ class BaseController extends GetxController {
         message: baseLoadingAndErrorErrorMessage5.tr,
         snackBarType: SnackBarType.error,
       );
-    } else if (exception.code == AppStrings.codeAEConnection ||
-        exception.code == AppStrings.codeAECancel) {
+    } else if (exception.code == AppStrings.codeAEConnection || exception.code == AppStrings.codeAECancel) {
       noTitleSnackBar(
         message: baseLoadingAndErrorErrorMessage1.tr,
         snackBarType: SnackBarType.error,
@@ -442,6 +439,7 @@ class BaseController extends GetxController {
   dynamicHandleResponse<T>(
     Future<T> useCase, {
     Function(T response)? success,
+    Function()? failed,
     Function(AppException exception)? serverErrorSnackBar,
     Function(AppException exception)? serverErrorPage,
     Function(AppException exception)? serverError,
@@ -465,15 +463,12 @@ class BaseController extends GetxController {
               if (scope) {
                 errorHandlerPage(
                   error,
-                  custom:
-                      serverErrorPage != null ? serverErrorPage(error) : null,
+                  custom: serverErrorPage != null ? serverErrorPage(error) : null,
                 );
               } else {
                 errorHandlerSnackBar(
                   error,
-                  custom: serverErrorSnackBar != null
-                      ? serverErrorSnackBar(error)
-                      : null,
+                  custom: serverErrorSnackBar != null ? serverErrorSnackBar(error) : null,
                 );
               }
             }
@@ -490,6 +485,10 @@ class BaseController extends GetxController {
               );
             }
           }
+        }
+
+        if (failed != null) {
+          failed();
         }
       },
     );

@@ -1,9 +1,12 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:watch_app/data/models/feature/movie/movie_feature_model.dart';
+import 'package:watch_app/domain/entities/base/base_request.dart';
+import 'package:watch_app/domain/entities/base/base_response.dart';
 import 'package:watch_app/domain/entities/feature/movie/movie_feature.dart';
 import 'package:watch_app/domain/use_cases/network/app/movie_detail_use_case.dart';
+import 'package:watch_app/presentation/get/base/base_controller.dart';
 
-class DialogMovieDetailController extends GetxController {
+class DialogMovieDetailController extends BaseController {
   final MovieDetailUseCase useCase;
 
   DialogMovieDetailController(
@@ -11,26 +14,76 @@ class DialogMovieDetailController extends GetxController {
   );
 
   final _arguments = MovieFeature().obs;
+  final _detail = MovieFeature().obs;
+
+  bool isLoading = false;
 
   setArguments(MovieFeature value) {
     _arguments.value = value;
   }
 
+  setDetail(MovieFeature value) {
+    _detail.value = value;
+  }
+
   MovieFeature get arguments => _arguments.value;
+
+  MovieFeature get detail => _detail.value;
 
   @override
   void onInit() {
     super.onInit();
     _initArgument();
+    isLoading = true;
+    onCall();
+  }
+
+  @override
+  onCall({
+    BuildContext? context,
+    int? index,
+    bool? pageScope,
+    bool? hideError,
+    bool? hideFailed,
+    bool? useBasicHandleFailed,
+  }) async {
+    dynamicHandleResponse<BaseResponse>(
+      useCase.execute(
+        BaseRequest(id: arguments.id?.toString(), appendToResponse: "images,videos,similar,reviews"),
+      ),
+      success: (response) {
+        var data = response.data;
+        if (data is MovieFeature) {
+          var init = arguments;
+          setArguments(
+            init.copyWith(
+              overview: data.overview,
+              backdropPath: data.backdropPath,
+            ),
+          );
+          setDetail(data);
+        }
+        isLoading = false;
+      },
+      failed: () {
+        isLoading = false;
+      },
+    );
   }
 
   _initArgument() async {
     var data = Get.arguments;
-    print("argumen is not empty: ${data != null}");
-    print("argumen is movie feature: ${data is MovieFeature}");
-    print("argumen is movie feature model: ${data is MovieFeatureModel}");
     if (data != null) {
       setArguments(data);
+    }
+  }
+
+  onPlay() {
+    if (!isLoading) {
+      print("video size: ${detail.videos?.length}");
+      print("video no 1: ${detail.videos?.first}");
+    } else {
+      noTitleSnackBar(message: "Sedang memuat detail video. coba beberapa saat lagi");
     }
   }
 }

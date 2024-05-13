@@ -5,6 +5,7 @@ class AssetsConstants {
   static const String logos = "${assets}logos/";
   static const String images = "${assets}images/";
 
+  static const String iconPlay = "${icons}ic_play.png";
   static const String iconSort = "${icons}ic_sort.png";
 
   static const String imageDefaultProfile = "${images}img_default_profile.png";
