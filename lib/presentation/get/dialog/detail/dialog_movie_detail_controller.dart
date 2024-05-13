@@ -5,6 +5,8 @@ import 'package:watch_app/domain/entities/base/base_response.dart';
 import 'package:watch_app/domain/entities/feature/movie/movie_feature.dart';
 import 'package:watch_app/domain/use_cases/network/app/movie_detail_use_case.dart';
 import 'package:watch_app/presentation/get/base/base_controller.dart';
+import 'package:watch_app/presentation/get/dialog/play/dialog_play_binding.dart';
+import 'package:watch_app/presentation/ui/widgets/custom/dialog/dialog_play_view.dart';
 
 class DialogMovieDetailController extends BaseController {
   final MovieDetailUseCase useCase;
@@ -82,6 +84,17 @@ class DialogMovieDetailController extends BaseController {
     if (!isLoading) {
       print("video size: ${detail.videos?.length}");
       print("video no 1: ${detail.videos?.first}");
+      if(detail.videos != null && detail.videos!.length > 0){
+        Get.to(
+          const DialogPlayView(),
+          binding: DialogPlayBinding(),
+          arguments: "${detail.videos!.first.key}",
+          fullscreenDialog: true,
+          transition: Transition.fade,
+        );
+      }else{
+        noTitleSnackBar(message: "Maaf video tidak ditemukan");
+      }
     } else {
       noTitleSnackBar(message: "Sedang memuat detail video. coba beberapa saat lagi");
     }
