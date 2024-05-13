@@ -1,10 +1,8 @@
+import 'package:get/get.dart';
 import 'package:watch_app/app/config/routes/app_routes.dart';
-import 'package:watch_app/presentation/get/detail/detail_binding.dart';
 import 'package:watch_app/presentation/get/home/home_binding.dart';
 import 'package:watch_app/presentation/get/list/list_binding.dart';
-import 'package:watch_app/presentation/ui/pages/detail/detail_page.dart';
 import 'package:watch_app/presentation/ui/pages/home/home_page.dart';
-import 'package:get/get.dart';
 import 'package:watch_app/presentation/ui/pages/list/list_page.dart';
 
 class AppPages {
@@ -18,11 +16,6 @@ class AppPages {
       name: AppRoutes.list,
       page: () => const ListPage(),
       binding: ListBinding(),
-    ),
-    GetPage(
-      name: AppRoutes.detail,
-      page: () => const DetailPage(),
-      binding: DetailBinding(),
     ),
   ];
 }

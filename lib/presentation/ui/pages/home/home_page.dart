@@ -33,14 +33,14 @@ class HomePage extends BaseOnlineGetView<HomeController> {
                           (item) => Center(
                             child: item.backdropPath != null
                                 ? InkWell(
-                                    onTap: () {},
+                                    onTap: () => controller.onDetail(item),
                                     child: Image.network(
                                       "$imgUrl500${item.backdropPath}",
                                       fit: BoxFit.cover,
                                     ),
                                   )
                                 : InkWell(
-                                    onTap: () {},
+                                    onTap: () => controller.onDetail(item),
                                     child: Image.asset(
                                       AssetsConstants.imageNoImage,
                                       fit: BoxFit.cover,
@@ -72,7 +72,8 @@ class HomePage extends BaseOnlineGetView<HomeController> {
                       shrinkWrap: true,
                       itemBuilder: (context, index) => LandscapeItemListView(
                         item: controller.topRatedList[index],
-                        onTap: () {},
+                        onTap: () =>
+                            controller.onDetail(controller.topRatedList[index]),
                       ),
                       separatorBuilder: (context, index) =>
                           BaseSpacerView.widthSmall,
@@ -101,7 +102,8 @@ class HomePage extends BaseOnlineGetView<HomeController> {
                       shrinkWrap: true,
                       itemBuilder: (context, index) => PortraitItemListView(
                         item: controller.nowPlayingList[index],
-                        onTap: () {},
+                        onTap: () => controller
+                            .onDetail(controller.nowPlayingList[index]),
                       ),
                       separatorBuilder: (context, index) =>
                           BaseSpacerView.widthSmall,
@@ -130,7 +132,8 @@ class HomePage extends BaseOnlineGetView<HomeController> {
                       shrinkWrap: true,
                       itemBuilder: (context, index) => PortraitItemListView(
                         item: controller.upcomingList[index],
-                        onTap: () {},
+                        onTap: () =>
+                            controller.onDetail(controller.upcomingList[index]),
                       ),
                       separatorBuilder: (context, index) =>
                           BaseSpacerView.widthSmall,

@@ -6,6 +6,8 @@ import 'package:watch_app/domain/entities/base/base_response.dart';
 import 'package:watch_app/domain/entities/feature/movie/movie_feature.dart';
 import 'package:watch_app/domain/use_cases/network/app/home_use_case.dart';
 import 'package:watch_app/presentation/get/base/base_controller.dart';
+import 'package:watch_app/presentation/get/dialog/detail/dialog_movie_detail_binding.dart';
+import 'package:watch_app/presentation/ui/widgets/custom/dialog/dialog_movie_detail_view.dart';
 
 class HomeController extends BaseController {
   final HomeUseCase useCase;
@@ -106,5 +108,17 @@ class HomeController extends BaseController {
     int? index,
   }) {
     Get.toNamed(AppRoutes.list);
+  }
+
+  onDetail(
+    MovieFeature data,
+  ) {
+    Get.to(
+      const DialogMovieDetailView(),
+      binding: DialogMovieDetailBinding(),
+      arguments: data,
+      fullscreenDialog: true,
+      transition: Transition.fade,
+    );
   }
 }

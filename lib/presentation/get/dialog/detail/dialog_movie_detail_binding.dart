@@ -2,9 +2,9 @@ import 'package:get/get.dart';
 import 'package:watch_app/data/providers/network/sources/app/movie_remote_data_source.dart';
 import 'package:watch_app/data/repository/app/movie_repository_impl.dart';
 import 'package:watch_app/domain/use_cases/network/app/movie_detail_use_case.dart';
-import 'package:watch_app/presentation/get/detail/detail_controller.dart';
+import 'package:watch_app/presentation/get/dialog/detail/dialog_movie_detail_controller.dart';
 
-class DetailBinding extends Bindings {
+class DialogMovieDetailBinding extends Bindings {
   @override
   void dependencies() {
     _dataSource();
@@ -12,7 +12,7 @@ class DetailBinding extends Bindings {
     _useCase();
 
     Get.put(
-      DetailController(
+      DialogMovieDetailController(
         Get.find<MovieDetailUseCase>(),
       ),
     );
